@@ -10,8 +10,8 @@ echo "Criando rede"
 docker network create plat_network
 
 echo "Fazendo deploy de containeres para inferencia"
-docker run -d --restart always --network plat_network --name defaultpropensityapi defaultpropensityapi
-docker run -d --restart always --network plat_network --name customerclusteringapi customerclusteringapi
+docker run -d --restart always --network plat_network --name propensityapi propensityapi
+docker run -d --restart always --network plat_network --name clusteringapi clusteringapi
 
 echo "Atualizando microservices.json para expor APIs de inferencia"
 bash ./model-manager/update_config.sh
