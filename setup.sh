@@ -1,7 +1,7 @@
 echo "Configurando ambiente"
 
 echo "Criando imagens docker para todos os conteineres"
-docker build -t propensitymodelapi -f propensity_model/Dockerfile propensity-model/docker/
+docker build -t propensitymodelapi -f propensity-model/Dockerfile propensity-model/docker/
 # docker build -t customerclusteringapi -f part_2/dockerbuilds/Dockerfile part_2/docker/
 docker build -t modelmanager -f model-manager/dockerbuilds/Dockerfile model-manager/docker/
 # docker build -t frontendstreamlit -f part_4/dockerbuilds/Dockerfile part_4/docker/
@@ -11,7 +11,7 @@ docker network create plat_network
 
 echo "Fazendo deploy de containeres para inferencia"
 docker run -d --restart always --network plat_network --name propensityapi propensityapi
-docker run -d --restart always --network plat_network --name clusteringapi clusteringapi
+# docker run -d --restart always --network plat_network --name clusteringapi clusteringapi
 
 echo "Atualizando microservices.json para expor APIs de inferencia"
 bash ./model-manager/update_config.sh
