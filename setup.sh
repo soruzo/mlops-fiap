@@ -1,7 +1,7 @@
 echo "Configurando ambiente"
 
 echo "Criando imagens docker para todos os conteineres"
-docker build -t propensitymodelapi -f propensity-model/Dockerfile propensity-model/docker/
+docker build -t propensitymodelapi -f propensity-model/dockerbuilds/Dockerfile propensity-model/docker/
 # docker build -t customerclusteringapi -f part_2/dockerbuilds/Dockerfile part_2/docker/
 docker build -t modelmanager -f model-manager/dockerbuilds/Dockerfile model-manager/docker/
 # docker build -t frontendstreamlit -f part_4/dockerbuilds/Dockerfile part_4/docker/
