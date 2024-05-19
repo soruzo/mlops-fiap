@@ -20,6 +20,8 @@ class NpEncoder(json.JSONEncoder):
 
 app = Flask(__name__)
 app.json_encoder = NpEncoder
+logging.basicConfig(filename='/log/inferencia.log', level=logging.INFO,
+                    format='%(asctime)s %(levelname)s %(message)s')
 
 def init():
     global model
@@ -43,4 +45,5 @@ def call_home(request = request):
 
 if __name__ == '__main__':
     init()
+    logging.info('Executando inferencia...')
     app.run(port=8080, host = '0.0.0.0')
